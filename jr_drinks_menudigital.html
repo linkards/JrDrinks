@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Jr. Drinks - Menú Digital Refrescante</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Fredoka & Outfit for fun, tropical & readable typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-blue': '#0066FF',      /* Azul brillante del logo */
+            'brand-navy': '#0D1B2A',      /* Azul oscuro de contraste */
+            'brand-cyan': '#00D2FF',      /* Azul hielo / turquesa */
+            'brand-pink': '#FF007A',      /* Magenta pitaya / rosa tropical */
+            'brand-lime': '#2ED573',      /* Verde manzana / limón */
+            'brand-mango': '#FF9F43',     /* Mango / Naranja maracuyá */
+            'brand-purple': '#8E44AD',    /* Uva / Dragon fruit */
+            'brand-yellow': '#FFC312',    /* Amarillo piña */
+            'bg-light': '#F2F7FA',        /* Fondo fresco limpio */
+          },
+          fontFamily: {
+            fredoka: ['Fredoka', 'sans-serif'],
+            outfit: ['Outfit', 'sans-serif'],
+          },
+          boxShadow: {
+            'glow-cyan': '0 0 15px rgba(0, 210, 255, 0.4)',
+            'glow-pink': '0 0 15px rgba(255, 0, 122, 0.4)',
+            'card-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar for smooth mobile navigation */
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00D2FF;
+      border-radius: 10px;
+    }
+    
+    /* Animated floating bubbles effect */
+    @keyframes floatBubble {
+      0% { transform: translateY(0px) scale(1); opacity: 0.7; }
+      50% { transform: translateY(-15px) scale(1.1); opacity: 1; }
+      100% { transform: translateY(-30px) scale(1); opacity: 0; }
+    }
+    
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(0, 210, 255, 0.3));
+      animation: floatBubble 4s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    /* Glitter shimmer effect for titles */
+    @keyframes glitterShimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .glitter-text {
+      background: linear-gradient(90deg, #FF007A, #00D2FF, #FFC312, #FF007A);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: glitterShimmer 4s linear infinite;
+    }
+
+    /* Mobile Container Guard */
+    .mobile-container {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background-color: #F2F7FA;
+    }
+
+    /* Custom Radio styling for beverage customizer */
+    .custom-radio:checked + label {
+      border-color: #0066FF;
+      background-color: #EBF5FF;
+      box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+    }
+
+    /* Modal Animation */
+    .modal-enter {
+      animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 font-outfit text-gray-800 antialiased selection:bg-brand-cyan selection:text-white">
+
+  <div class="mobile-container relative flex flex-col shadow-2xl overflow-x-hidden pb-28">
+
+    <!-- Header & Hero Section with Tropical Vibe -->
+    <header class="relative bg-gradient-to-b from-[#0D1B2A] via-[#003B73] to-[#0066FF] text-white pt-6 pb-12 px-4 rounded-b-3xl overflow-hidden shadow-lg">
+      
+      <!-- Background Decorative Elements & Bubbles -->
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="bubble w-6 h-6 left-6 top-10" style="animation-delay: 0s;"></div>
+        <div class="bubble w-10 h-10 left-1/4 top-24" style="animation-delay: 1s;"></div>
+        <div class="bubble w-4 h-4 right-10 top-12" style="animation-delay: 1.5s;"></div>
+        <div class="bubble w-8 h-8 right-1/3 top-32" style="animation-delay: 2.5s;"></div>
+        <!-- Tropical Palms Silhouette Placeholder SVG -->
+        <svg class="absolute bottom-0 right-0 w-32 h-32 opacity-30 text-white fill-current" viewBox="0 0 24 24">
+          <path d="M17,11C15.5,11 14.15,11.53 13.1,12.41C12.8,9.75 11.2,7.37 8.85,6.07C10.22,4.8 12.1,4 14.16,4C18.58,4 22.16,7.58 22.16,12C22.16,13.84 21.54,15.54 20.48,16.9C19.7,13.43 17,11 17,11M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z"/>
+        </svg>
+      </div>
+
+      <!-- Top Utility Bar -->
+      <div class="flex items-center justify-between mb-4 relative z-10">
+        <span >
+          
+        </span>
+        <button onclick="openCartModal()" class="relative p-2.5 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md transition-all active:scale-95">
+          <i class="fa-solid fa-basket-shopping text-white text-lg"></i>
+          <span id="header-cart-badge" class="hidden absolute -top-1 -right-1 bg-[#FF007A] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#0D1B2A]">
+            0
+          </span>
+        </button>
+      </div>
+
+      <!-- Logo Frame -->
+      <div class="flex flex-col items-center text-center relative z-10">
+        <div class="relative group cursor-pointer mb-2">
+          <div class="absolute -inset-1 bg-gradient-to-r from-[#00D2FF] via-[#FF007A] to-[#FFC312] rounded-full blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+          <img src="https://i.postimg.cc/zXVXjtZ5/jr-drinks-logo.png" alt="Jr. Drinks Logo" class="relative w-36 sm:w-60 h-auto object-contain drop-shadow-xl transform hover:scale-105 transition duration-300">
+        </div>
+        
+        <p class="font-fredoka text-sm text-[#00D2FF] tracking-wider uppercase font-semibold mt-1">
+          ¡Frescura que se siente!
+        </p>
+        <div class="flex items-center gap-2 mt-2 text-xs text-blue-100/80 font-medium">
+          <span>Burbujas</span> • <span>Sabor</span> • <span>Frescura</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search & Filters Section -->
+    <div class="p-4 space-y-3">
+      
+      <!-- Search Bar -->
+      <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+        <input 
+          type="text" 
+          id="search-input" 
+          oninput="filterMenu()"
+          placeholder="Buscar sabor (Mango, Pitaya, Menta...)" 
+          class="w-full pl-10 pr-10 py-2.5 bg-white rounded-2xl border border-gray-200 text-sm focus:outline-none focus:border-[#0066FF] focus:ring-2 focus:ring-[#0066FF]/20 shadow-sm transition"
+        >
+        <button id="clear-search" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-xs p-1">
+          <i class="fa-solid fa-circle-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Categories Pills (Horizontal Scroll) -->
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+        <button onclick="setCategory('all')" id="cat-btn-all" class="cat-btn active bg-[#0066FF] text-white px-4 py-2 rounded-xl font-fredoka text-xs font-semibold whitespace-nowrap shadow-md transition-all flex items-center gap-1.5">
+          <i class="fa-solid fa-border-all"></i> Todas
+        </button>
+        <button onclick="setCategory('sodas')" id="cat-btn-sodas" class="cat-btn bg-white text-gray-600 border border-gray-200 px-4 py-2 rounded-xl font-fredoka text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 hover:bg-gray-50">
+          ✨ Sodas Italianas
+        </button>
+        <button onclick="setCategory('combos')" id="cat-btn-combos" class="cat-btn bg-white text-gray-600 border border-gray-200 px-4 py-2 rounded-xl font-fredoka text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 hover:bg-gray-50">
+          ✨ Sodas Explosivas
+        </button>
+        <button onclick="setCategory('preparadas')" id="cat-btn-preparadas" class="cat-btn bg-white text-gray-600 border border-gray-200 px-4 py-2 rounded-xl font-fredoka text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 hover:bg-gray-50">
+          🍹 Preparadas 1 Litro
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Custom Soda Builder Card -->
+    <div id="custom-builder-section" class="px-4 mb-6">
+      <div class="bg-gradient-to-br from-[#0D1B2A] to-[#1B2A47] text-white rounded-3xl p-5 shadow-xl relative overflow-hidden border border-[#00D2FF]/30">
+        
+        <!-- Decorative Glow -->
+        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-[#00D2FF]/20 rounded-full blur-2xl"></div>
+        <div class="absolute -left-10 -top-10 w-40 h-40 bg-[#FF007A]/20 rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <span class="bg-[#FF007A] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
+                ¡Tú Eliges!
+              </span>
+              <h2 class="font-fredoka text-lg font-bold text-white mt-1">
+                🎨 Arma Tu Soda A Tu Gusto
+              </h2>
+            </div>
+            <div class="text-right">
+              <span class="text-xs text-gray-300">Desde</span>
+              <div class="font-fredoka text-2xl font-extrabold text-[#00D2FF]">$45</div>
+            </div>
+          </div>
+
+          <p class="text-xs text-gray-300 mb-4 leading-relaxed">
+            Combina tu concentrado con glitter favorito y agrega perlas explosivas para la mejor experiencia.
+          </p>
+
+          <!-- Interactive Mini Form -->
+          <div class="space-y-3 bg-white/5 backdrop-blur-md p-3.5 rounded-2xl border border-white/10 text-xs">
+            
+            <!-- Step 1: Glitter Syrup -->
+            <div>
+              <label class="block font-fredoka text-[#00D2FF] text-xs font-semibold mb-1">
+                1. Sabor de concentrado:
+              </label>
+              <select id="builder-flavor" class="w-full bg-[#0D1B2A] text-white border border-gray-600 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#00D2FF]">
+                <option value="Menta Azul 🔵">Menta Azul</option>
+                <option value="Maracuyá 🟡">Maracuyá</option>
+                <option value="Manzana Verde 🟢">Manzana Verde</option>
+                <option value="Frutos Rojos 🔴">Frutos Rojos</option>
+                <option value="Pitaya (Dragon Fruit) 💗">Pitaya (Dragon Fruit)</option>
+                <option value="Blueberry 🫐">Blueberry</option>
+              </select>
+            </div>
+
+            <!-- Step 2: Popping Boba -->
+            <div>
+              <label class="block font-fredoka text-[#00D2FF] text-xs font-semibold mb-1">
+                2. Perlas Explosivas:
+              </label>
+              <select id="builder-boba" onchange="updateBuilderPrice()" class="w-full bg-[#0D1B2A] text-white border border-gray-600 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#00D2FF]">
+                <option value="0|Sin Perlas">Sin Perlas Explosivas ($0)</option>
+                <option value="10|Perlas de Uva 🍇">Perlas de Uva (+ $10)</option>
+                <option value="10|Perlas de Limonada Rosa 🍋">Perlas de Limonada Rosa (+ $10)</option>
+                <option value="10|Perlas de Mango 🥭">Perlas de Mango (+ $10)</option>
+                <option value="10|Perlas de Cereza 🍒">Perlas de Cereza (+ $10)</option>
+                <option value="10|Perlas de Blueberry 🫐">Perlas de Blueberry (+ $10)</option>
+              </select>
+            </div>
+
+            <!-- Total display and Add button -->
+            <div class="pt-2 flex items-center justify-between border-t border-white/10 mt-3">
+              <div>
+                <span class="text-[10px] text-gray-400 uppercase">Precio Total:</span>
+                <div id="builder-total-price" class="font-fredoka text-xl font-bold text-[#FFC312]">$45</div>
+              </div>
+              <button onclick="addCustomSodaToCart()" class="bg-gradient-to-r from-[#00D2FF] to-[#0066FF] hover:from-[#0066FF] hover:to-[#00D2FF] text-white font-fredoka font-bold text-xs px-5 py-2.5 rounded-xl shadow-lg active:scale-95 transition flex items-center gap-1.5">
+                <i class="fa-solid fa-plus"></i> Agregar al Pedido
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Menu Items Container -->
+    <main class="px-4 space-y-6">
+
+      <!-- Section: Signature Combos (Sodas de Combinación Especial) -->
+      <section id="section-combos" class="menu-section">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="font-fredoka text-base font-bold text-gray-800 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-[#FF007A]"></span>
+            Combinaciones Especiales (18 oz)
+          </h2>
+          <span class="text-xs text-[#0066FF] font-semibold bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
+            $55 • Incluye perlas explosivas
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="combos-grid">
+          <!-- Items will be injected by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Section: Preparadas 1 Litro (Agua Mineral & Rusas) -->
+      <section id="section-preparadas" class="menu-section">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="font-fredoka text-base font-bold text-gray-800 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-[#2ED573]"></span>
+            Especialidades de 1 Litro (1L)
+          </h2>
+          <span class="bg-emerald-50 text-emerald-600 text-xs font-semibold px-2.5 py-1 rounded-full border border-emerald-100">
+            ¡Máxima Frescura!
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="preparadas-grid">
+          <!-- Items injected by JavaScript -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Sticky Bottom Navigation / Cart Floating Bar -->
+    <div id="sticky-cart-bar" class="fixed bottom-0 left-0 right-0 z-40 max-w-[480px] mx-auto p-4 pointer-events-none">
+      <div class="bg-[#0D1B2A]/90 backdrop-blur-lg border border-white/20 text-white rounded-2xl p-3 shadow-2xl flex items-center justify-between pointer-events-auto transform transition duration-300">
+        
+        <div class="flex items-center gap-3 pl-2">
+          <div class="relative">
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#0066FF] to-[#00D2FF] flex items-center justify-center text-lg shadow-md">
+              <i class="fa-solid fa-glass-water"></i>
+            </div>
+            <span id="floating-cart-count" class="absolute -top-1 -right-1 bg-[#FF007A] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#0D1B2A]">
+              0
+            </span>
+          </div>
+          <div>
+            <div class="text-[11px] text-gray-300">Total en Pedido:</div>
+            <div id="floating-cart-total" class="font-fredoka text-lg font-bold text-[#FFC312]">$0.00</div>
+          </div>
+        </div>
+
+        <button onclick="openCartModal()" class="bg-gradient-to-r from-[#FF007A] to-[#8E44AD] hover:opacity-95 text-white font-fredoka font-bold text-xs px-5 py-3 rounded-xl shadow-lg active:scale-95 transition flex items-center gap-2">
+          <span>Ver Mi Pedido</span>
+          <i class="fa-solid fa-chevron-right text-xs"></i>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Shopping Cart Slide-up Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex flex-col justify-end">
+      <!-- Backdrop Click to close -->
+      <div class="flex-1" onclick="closeCartModal()"></div>
+
+      <!-- Drawer Content -->
+      <div class="bg-white rounded-t-3xl max-h-[85vh] flex flex-col modal-enter overflow-hidden max-w-[480px] w-full mx-auto">
+        
+        <!-- Modal Header -->
+        <div class="bg-[#0D1B2A] text-white p-4 flex items-center justify-between border-b border-gray-800">
+          <div class="flex items-center gap-2">
+            <img src="https://i.postimg.cc/zXVXjtZ5/jr-drinks-logo.png" alt="Logo" class="h-8 w-auto">
+            <div>
+              <h3 class="font-fredoka text-sm font-bold">Tu Pedido Jr. Drinks</h3>
+              <p class="text-[10px] text-[#00D2FF]">Frescura directa a tu WhatsApp</p>
+            </div>
+          </div>
+          <button onclick="closeCartModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-gray-300">
+            <i class="fa-solid fa-xmark text-sm"></i>
+          </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cart-items-container" class="p-4 overflow-y-auto space-y-3 flex-1 min-h-[150px] max-h-[350px]">
+          <!-- Items will be injected here -->
+        </div>
+
+        <!-- Empty Cart Placeholder -->
+        <div id="empty-cart-view" class="p-8 text-center space-y-3 hidden">
+          <div class="w-16 h-16 rounded-full bg-blue-50 text-[#0066FF] flex items-center justify-center text-2xl mx-auto">
+            <i class="fa-solid fa-glass-water-droplet"></i>
+          </div>
+          <h4 class="font-fredoka text-base text-gray-700">Tu vaso está vacío</h4>
+          <p class="text-xs text-gray-500">Agrega tus sodas italianas o bebidas preparadas para realizar tu pedido.</p>
+        </div>
+
+        <!-- Order Form & Checkout Footer -->
+        <div class="p-4 bg-gray-50 border-t border-gray-200 space-y-3">
+          
+          <!-- Customer Details -->
+          <div class="space-y-2">
+            <input 
+              type="text" 
+              id="customer-name" 
+              placeholder="Tu Nombre (Ej. Carlos Rodríguez)" 
+              class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-xs focus:outline-none focus:border-[#0066FF]"
+            >
+          </div>
+
+          <!-- Total Calculation -->
+          <div class="flex items-center justify-between text-sm py-1 font-fredoka">
+            <span class="text-gray-600">Total a pagar:</span>
+            <span id="cart-final-total" class="text-xl font-bold text-[#0066FF]">$0.00</span>
+          </div>
+
+          <!-- WhatsApp Button -->
+          <button onclick="sendOrderToWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-fredoka font-bold text-sm py-3 rounded-2xl shadow-lg flex items-center justify-center gap-2 active:scale-95 transition">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span>Enviar Pedido por WhatsApp</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Drink Customizer Modal for Presets -->
+    <div id="customize-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex flex-col justify-end">
+      <div class="flex-1" onclick="closeCustomizeModal()"></div>
+      
+      <div class="bg-white rounded-t-3xl p-5 modal-enter max-w-[480px] w-full mx-auto space-y-4">
+        
+        <div class="flex items-start justify-between">
+          <div class="flex items-center gap-3">
+            <img id="modal-item-img" src="" class="w-14 h-14 rounded-xl object-cover border border-gray-100 shadow-sm hidden" alt="Soda">
+            <div>
+              <span id="modal-item-badge" class="bg-blue-100 text-[#0066FF] text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">
+                Soda Italiana 18 oz
+              </span>
+              <h3 id="modal-item-title" class="font-fredoka text-lg font-bold text-gray-800 mt-1">
+                Blue Ocean
+              </h3>
+              <p id="modal-item-desc" class="text-xs text-gray-500 mt-0.5">
+                Menta azul + Blueberry
+              </p>
+            </div>
+          </div>
+          <button onclick="closeCustomizeModal()" class="text-gray-400 hover:text-gray-600 p-1">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+
+        <!-- Custom Options -->
+        <div class="space-y-3 py-2 text-xs">
+          <div>
+            <label class="font-fredoka text-gray-700 block mb-1.5 font-semibold">
+              ¿Deseas agregar Perlas Explosivas? (+ $10)
+            </label>
+            <div class="grid grid-cols-2 gap-2" id="modal-boba-options">
+              <label class="border border-gray-200 p-2 rounded-xl flex items-center gap-2 cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="modal-boba" value="0|Sin perlas" checked class="text-[#0066FF]">
+                <span>Sin perlas extra</span>
+              </label>
+              <label class="border border-gray-200 p-2 rounded-xl flex items-center gap-2 cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="modal-boba" value="10|Perlas de Uva 🍇" class="text-[#0066FF]">
+                <span>🍇 Uva (+ $10)</span>
+              </label>
+              <label class="border border-gray-200 p-2 rounded-xl flex items-center gap-2 cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="modal-boba" value="10|Perlas Limonada Rosa 🍋" class="text-[#0066FF]">
+                <span>🍋 Limonada Rosa (+ $10)</span>
+              </label>
+              <label class="border border-gray-200 p-2 rounded-xl flex items-center gap-2 cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="modal-boba" value="10|Perlas de Mango 🥭" class="text-[#0066FF]">
+                <span>🥭 Mango (+ $10)</span>
+              </label>
+              <label class="border border-gray-200 p-2 rounded-xl flex items-center gap-2 cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="modal-boba" value="10|Perlas de Cereza 🍒" class="text-[#0066FF]">
+                <span>🍒 Cereza (+ $10)</span>
+              </label>
+              <label class="border border-gray-200 p-2 rounded-xl flex items-center gap-2 cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="modal-boba" value="10|Perlas de Blueberry 🫐" class="text-[#0066FF]">
+                <span>🫐 Blueberry (+ $10)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button onclick="confirmModalAdd()" class="w-full bg-[#0066FF] hover:bg-blue-700 text-white font-fredoka font-bold text-sm py-3 rounded-2xl shadow-lg active:scale-95 transition">
+          Agregar al Pedido
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    /* Menu Data Definition - Direct mapping from images */
+    const combosData = [
+      {
+        id: 1,
+        num: "1",
+        name: "Blue Ocean",
+        flavors: "Menta azul + Blueberry",
+        price: 55,
+        badge: "Popular",
+        gradient: "from-[#00D2FF] to-[#0066FF]",
+        icon: "🫐",
+        image: "https://i.postimg.cc/8fT6CB6g/mj1.jpg",
+        category: "combos"
+      },
+      {
+        id: 2,
+        num: "2",
+        name: "Dragon Berry",
+        flavors: "Pitaya + Blueberry",
+        price: 55,
+        badge: "Recomendado",
+        gradient: "from-[#8E44AD] to-[#FF007A]",
+        icon: "🐉",
+        image: "https://i.postimg.cc/1VyqzcqQ/mj2.jpg",
+        category: "combos"
+      },
+      {
+        id: 3,
+        num: "3",
+        name: "Green Grape",
+        flavors: "Manzana verde + Uva",
+        price: 55,
+        badge: "Fresca",
+        gradient: "from-[#2ED573] to-[#10AC84]",
+        icon: "🍏",
+        image: "https://i.postimg.cc/64BvQLGk/mj3.jpg",
+        category: "combos"
+      },
+      {
+        id: 4,
+        num: "4",
+        name: "Cherry Berry",
+        flavors: "Frutos rojos + Cereza",
+        price: 55,
+        badge: "Doble Fruta",
+        gradient: "from-[#FF4757] to-[#C0392B]",
+        icon: "🍒",
+        image: "https://i.postimg.cc/vxGVmL6p/mj4.jpg",
+        category: "combos"
+      },
+      {
+        id: 5,
+        num: "5",
+        name: "Mango Passion",
+        flavors: "Maracuyá + Mango",
+        price: 55,
+        badge: "Tropical",
+        gradient: "from-[#FFC312] to-[#FF9F43]",
+        icon: "🥭",
+        image: "https://i.postimg.cc/vxGVmL62/mj5.jpg",
+        category: "combos"
+      },
+      {
+        id: 6,
+        num: "6",
+        name: "Pink Dragon",
+        flavors: "Pitaya + Limonada rosa",
+        price: 55,
+        badge: "Pink Vibe",
+        gradient: "from-[#FF007A] to-[#FF6B81]",
+        icon: "💗",
+        image: "https://i.postimg.cc/MfzQGbjL/mj6.jpg",
+        category: "combos"
+      },
+      {
+        id: 7,
+        num: "7",
+        name: "Blue Pink",
+        flavors: "Blueberry + Limonada rosa",
+        price: 55,
+        badge: "Top Ventas",
+        gradient: "from-[#00D2FF] via-[#0066FF] to-[#FF007A]",
+        icon: "🌊",
+        image: "https://i.postimg.cc/K3mMYrgs/mj7.jpg",
+        category: "combos"
+      },
+      {
+        id: 8,
+        num: "8",
+        name: "Berry Grape",
+        flavors: "Frutos rojos + Uva",
+        price: 55,
+        badge: "Intenso",
+        gradient: "from-[#8E44AD] to-[#2C3A47]",
+        icon: "🍇",
+        image: "https://i.postimg.cc/RJvH0QnD/mj8.jpg",
+        category: "combos"
+      }
+    ];
+
+    const preparadasData = [
+      
+      {
+        id: 102,
+        name: "Rusa Tropical",
+        desc: "Preparada con toronja/piña, escarchado especial de chamoy y tajín, trozos de fruta y banderilla.",
+        price: 75,
+        size: "",
+        badge: "1 Litro",
+        gradient: "from-[#FF9F43] to-[#FF4757]",
+        icon: "🍍",
+        image: "https://i.postimg.cc/WpZJhFhK/mj10.jpg",
+        category: "preparadas",
+        available: true
+      },
+      {
+        id: 101,
+        name: "Agua Mineral Preparada",
+        desc: "Escarchada con chamoy de la casa y chile en polvo, limón fresco, hielo en cubos y sal. ¡Super refrescante!",
+        price: 0,
+        size: "",
+        badge: "Próximamente",
+        gradient: "from-[#00D2FF] to-[#0066FF]",
+        icon: "🍋",
+        image: "https://i.postimg.cc/bJcpMJpv/mj11.jpg",
+        category: "preparadas",
+        available: false
+      },
+       {
+        id: 104,
+        name: "Clamato preparado",
+        desc: "Clamato preparado con salsas de la casa (sin alcohol)",
+        price: 0,
+        size: "",
+        badge: "Próximamente",
+        gradient: "from-[#00D2FF] to-[#0066FF]",
+        icon: "🍋",
+        image: "https://i.postimg.cc/xCxg8k8T/mj12.jpg",
+        category: "preparadas",
+        available: false
+      }
+      
+    ];
+
+    /* Shopping Cart State */
+    let cart = [];
+    let currentCategory = 'all';
+    let currentModalItem = null;
+
+    /* Initialize Menu Rendering on Load */
+    window.onload = function() {
+      renderCombos(combosData);
+      renderPreparadas(preparadasData);
+      updateCartUI();
+    };
+
+    function renderCombos(items) {
+      const grid = document.getElementById('combos-grid');
+      grid.innerHTML = '';
+
+      if (items.length === 0) {
+        grid.innerHTML = `<p class="text-xs text-gray-400 col-span-2 text-center py-4">No se encontraron combinaciones.</p>`;
+        return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-3xl p-3.5 border border-gray-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between overflow-hidden";
+        card.innerHTML = `
+          <div>
+            <!-- Number & Badge Header -->
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="w-6 h-6 rounded-lg bg-gradient-to-r ${item.gradient} text-white font-fredoka font-bold text-xs flex items-center justify-center shadow-sm">
+                ${item.num}
+              </span>
+              <span class="bg-gray-100 text-gray-600 text-[10px] font-semibold px-2.5 py-0.5 rounded-full">
+                ${item.badge}
+              </span>
+            </div>
+
+            <!-- Large Beverage Photo -->
+            <div class="w-full h-48 sm:h-52 rounded-2xl overflow-hidden mb-3 border border-gray-100 bg-gray-50 shadow-sm relative group">
+              <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+              <div class="w-full h-full flex items-center justify-center text-4xl bg-gray-50 hidden">
+                ${item.icon}
+              </div>
+            </div>
+
+            <!-- Title & Flavors Below Image -->
+            <div class="mb-3 space-y-1">
+              <h3 class="font-fredoka text-base font-bold text-gray-800 leading-tight">
+                ${item.name}
+              </h3>
+              <div class="inline-flex items-center gap-1.5 bg-blue-50/80 text-[#0066FF] px-2.5 py-1 rounded-xl text-xs font-semibold border border-blue-100/60">
+                <i class="fa-solid fa-droplet text-[10px]"></i>
+                <span>${item.flavors}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price & Order Action -->
+          <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between mt-auto">
+            <div>
+              <span class="text-[10px] text-gray-400 font-medium">18 oz • Con Perlas</span>
+              <div class="font-fredoka text-base font-bold text-[#0066FF]">$${item.price}</div>
+            </div>
+            <button onclick="addComboToCart(${item.id})" class="bg-[#0066FF] hover:bg-blue-700 text-white px-3.5 py-2 rounded-xl text-xs font-bold font-fredoka transition flex items-center gap-1.5 shadow-sm active:scale-95">
+              <i class="fa-solid fa-plus text-[11px]"></i>
+              <span>Pedir</span>
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderPreparadas(items) {
+      const grid = document.getElementById('preparadas-grid');
+      grid.innerHTML = '';
+
+      if (items.length === 0) {
+        grid.innerHTML = `<p class="text-xs text-gray-400 col-span-2 text-center py-4">No se encontraron preparadas.</p>`;
+        return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-3xl p-3.5 border border-gray-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between overflow-hidden";
+        
+        // Render con imagen grande si cuenta con ella
+        const imageBlock = item.image ? `
+          <div class="w-full h-48 sm:h-52 rounded-2xl overflow-hidden mb-3 border border-gray-100 bg-gray-50 shadow-sm relative group">
+            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${!item.available ? 'grayscale opacity-75' : ''}" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+            <div class="w-full h-full flex items-center justify-center text-4xl bg-gray-50 hidden">
+              ${item.icon}
+            </div>
+          </div>
+        ` : `
+          <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-xl shrink-0 border border-amber-100 mb-2">
+            ${item.icon}
+          </div>
+        `;
+
+        const actionButton = item.available ? `
+          <button onclick="addToCart('${item.name}', ${item.price}, 'Presentación 1 Litro')" class="bg-emerald-50 hover:bg-emerald-600 text-emerald-600 hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold font-fredoka transition flex items-center gap-1.5 active:scale-95">
+            <i class="fa-solid fa-plus text-[11px]"></i>
+            <span>Agregar</span>
+          </button>
+        ` : `
+          <button disabled class="bg-gray-200 text-gray-500 px-3.5 py-2 rounded-xl text-xs font-bold font-fredoka cursor-not-allowed flex items-center gap-1.5 opacity-80">
+            <i class="fa-solid fa-ban text-[11px]"></i>
+            <span>Agotado</span>
+          </button>
+        `;
+
+        const priceDisplay = item.available ? `$${item.price}` : '---';
+
+        card.innerHTML = `
+          <div>
+            <!-- Header Badges -->
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="${item.available ? 'bg-emerald-100 text-emerald-700' : 'bg-gray-200 text-gray-600'} text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">
+                ${item.badge}
+              </span>
+              <span class="text-[11px] text-gray-400 font-medium">${item.size}</span>
+            </div>
+
+            <!-- Imagen Grande (si existe) -->
+            ${imageBlock}
+
+            <!-- Nombre e ingredientes debajo de la imagen -->
+            <div class="mb-3 space-y-1">
+              <h3 class="font-fredoka text-base font-bold text-gray-800 leading-tight">
+                ${item.name}
+              </h3>
+              <p class="text-xs text-gray-600 leading-snug bg-amber-50/60 p-2 rounded-xl border border-amber-100/60">
+                ${item.desc}
+              </p>
+            </div>
+          </div>
+
+          <!-- Footer Precio y Acción -->
+          <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between mt-auto">
+            <div>
+              <span class="text-[10px] text-gray-400">1 Litro</span>
+              <div class="font-fredoka text-base font-bold ${item.available ? 'text-[#0066FF]' : 'text-gray-400'}">${priceDisplay}</div>
+            </div>
+            ${actionButton}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    /* Category Filter */
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('bg-[#0066FF]', 'text-white');
+        btn.classList.add('bg-white', 'text-gray-600');
+      });
+
+      const activeBtn = document.getElementById(`cat-btn-${cat}`);
+      if(activeBtn) {
+        activeBtn.classList.remove('bg-white', 'text-gray-600');
+        activeBtn.classList.add('bg-[#0066FF]', 'text-white');
+      }
+
+      const combosSection = document.getElementById('section-combos');
+      const preparadasSec = document.getElementById('section-preparadas');
+      const customBuilder = document.getElementById('custom-builder-section');
+
+      if (cat === 'all') {
+        combosSection.style.display = 'block';
+        preparadasSec.style.display = 'block';
+        customBuilder.style.display = 'block';
+      } else if (cat === 'sodas') {
+        combosSection.style.display = 'none';
+        preparadasSec.style.display = 'none';
+        customBuilder.style.display = 'block';
+      } else if (cat === 'combos') {
+        combosSection.style.display = 'block';
+        preparadasSec.style.display = 'none';
+        customBuilder.style.display = 'none';
+      } else if (cat === 'preparadas') {
+        combosSection.style.display = 'none';
+        preparadasSec.style.display = 'block';
+        customBuilder.style.display = 'none';
+      }
+    }
+
+    /* Live Search Filter */
+    function filterMenu() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const clearBtn = document.getElementById('clear-search');
+
+      if (query.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+
+      const filteredCombos = combosData.filter(i => 
+        i.name.toLowerCase().includes(query) || i.flavors.toLowerCase().includes(query)
+      );
+
+      const filteredPreparadas = preparadasData.filter(i => 
+        i.name.toLowerCase().includes(query) || i.desc.toLowerCase().includes(query)
+      );
+
+      renderCombos(filteredCombos);
+      renderPreparadas(filteredPreparadas);
+    }
+
+    function clearSearch() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('clear-search').classList.add('hidden');
+      filterMenu();
+    }
+
+    /* Custom Soda Builder dynamic price calculator */
+    function updateBuilderPrice() {
+      const bobaSelect = document.getElementById('builder-boba');
+      const bobaVal = bobaSelect ? bobaSelect.value.split('|') : [0, 'Sin Perlas'];
+
+      const basePrice = 45;
+      const bobaPrice = parseInt(bobaVal[0]) || 0;
+
+      const total = basePrice + bobaPrice;
+      const totalEl = document.getElementById('builder-total-price');
+      if (totalEl) {
+        totalEl.innerText = `$${total}`;
+      }
+    }
+
+    function addCustomSodaToCart() {
+      const flavorEl = document.getElementById('builder-flavor');
+      const flavorVal = flavorEl ? flavorEl.value : 'Menta Azul 🔵';
+      const bobaSelect = document.getElementById('builder-boba');
+      const bobaVal = bobaSelect ? bobaSelect.value.split('|') : [0, 'Sin Perlas'];
+
+      const basePrice = 45;
+      const baseTitle = "Soda Italiana 18 oz";
+      const bobaPrice = parseInt(bobaVal[0]) || 0;
+      const bobaTitle = bobaVal[1] || 'Sin Perlas';
+
+      const totalPrice = basePrice + bobaPrice;
+      const title = `${baseTitle} (${flavorVal})`;
+      const details = bobaPrice > 0 ? `Con ${bobaTitle}` : `Sin perlas extra`;
+
+      addToCart(title, totalPrice, details);
+      alertToast("¡Tu soda personalizada se agregó al pedido!");
+    }
+
+    function addComboToCart(id) {
+      const item = combosData.find(i => i.id === id);
+      if(!item) return;
+      addToCart(`${item.name} (18 oz)`, item.price, 'Incluye perlas explosivas');
+      alertToast(`¡${item.name} agregada con perlas explosivas!`);
+    }
+
+    function scrollToBuilder() {
+      const builder = document.getElementById('custom-builder-section');
+      builder.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* Preset Item Customization Modal */
+    function openCustomizeModal(id) {
+      currentModalItem = combosData.find(i => i.id === id);
+      if(!currentModalItem) return;
+
+      document.getElementById('modal-item-title').innerText = currentModalItem.name;
+      document.getElementById('modal-item-desc').innerText = currentModalItem.flavors;
+
+      const modalImg = document.getElementById('modal-item-img');
+      if (modalImg && currentModalItem.image) {
+        modalImg.src = currentModalItem.image;
+        modalImg.classList.remove('hidden');
+      } else if (modalImg) {
+        modalImg.classList.add('hidden');
+      }
+
+      // Reset boba radio
+      const radios = document.getElementsByName('modal-boba');
+      if(radios.length > 0) radios[0].checked = true;
+
+      document.getElementById('customize-modal').classList.remove('hidden');
+    }
+
+    function closeCustomizeModal() {
+      document.getElementById('customize-modal').classList.add('hidden');
+    }
+
+    function confirmModalAdd() {
+      if(!currentModalItem) return;
+
+      const radios = document.getElementsByName('modal-boba');
+      let bobaPrice = 0;
+      let bobaText = "Sin perlas";
+
+      for (let r of radios) {
+        if(r.checked) {
+          const parts = r.value.split('|');
+          bobaPrice = parseInt(parts[0]);
+          bobaText = parts[1];
+          break;
+        }
+      }
+
+      const finalPrice = currentModalItem.price + bobaPrice;
+      const details = bobaPrice > 0 ? `Con ${bobaText}` : `Sin perlas extra`;
+
+      addToCart(`${currentModalItem.name} (18 oz)`, finalPrice, details);
+      closeCustomizeModal();
+      alertToast(`¡${currentModalItem.name} agregada!`);
+    }
+
+    /* Cart Logic */
+    function addToCart(title, price, details = "") {
+      const existing = cart.find(item => item.title === title && item.details === details);
+      if(existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          id: Date.now(),
+          title: title,
+          price: price,
+          details: details,
+          qty: 1
+        });
+      }
+      updateCartUI();
+    }
+
+    function updateCartQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if(!item) return;
+
+      item.qty += delta;
+      if(item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const cartCount = cart.reduce((acc, item) => acc + item.qty, 0);
+      const cartTotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+      // Header and Floating bar badges
+      document.getElementById('header-cart-badge').innerText = cartCount;
+      document.getElementById('header-cart-badge').classList.toggle('hidden', cartCount === 0);
+
+      document.getElementById('floating-cart-count').innerText = cartCount;
+      document.getElementById('floating-cart-total').innerText = `$${cartTotal.toFixed(2)}`;
+
+      // Render items inside Modal
+      const container = document.getElementById('cart-items-container');
+      const emptyView = document.getElementById('empty-cart-view');
+
+      container.innerHTML = '';
+
+      if (cart.length === 0) {
+        emptyView.classList.remove('hidden');
+        container.classList.add('hidden');
+      } else {
+        emptyView.classList.add('hidden');
+        container.classList.remove('hidden');
+
+        cart.forEach(item => {
+          const itemEl = document.createElement('div');
+          itemEl.className = "flex items-center justify-between p-3 bg-gray-50 rounded-2xl border border-gray-100";
+          itemEl.innerHTML = `
+            <div>
+              <div class="font-fredoka text-xs font-bold text-gray-800">${item.title}</div>
+              <div class="text-[10px] text-gray-500">${item.details}</div>
+              <div class="font-fredoka text-xs font-bold text-[#0066FF] mt-1">$${item.price} c/u</div>
+            </div>
+
+            <div class="flex items-center gap-2 bg-white px-2 py-1 rounded-xl border border-gray-200">
+              <button onclick="updateCartQty(${item.id}, -1)" class="w-6 h-6 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold flex items-center justify-center text-xs">
+                -
+              </button>
+              <span class="font-fredoka text-xs font-bold w-4 text-center">${item.qty}</span>
+              <button onclick="updateCartQty(${item.id}, 1)" class="w-6 h-6 rounded-lg bg-[#0066FF] text-white font-bold flex items-center justify-center text-xs">
+                +
+              </button>
+            </div>
+          `;
+          container.appendChild(itemEl);
+        });
+      }
+
+      document.getElementById('cart-final-total').innerText = `$${cartTotal.toFixed(2)}`;
+    }
+
+    function openCartModal() {
+      document.getElementById('cart-modal').classList.remove('hidden');
+    }
+
+    function closeCartModal() {
+      document.getElementById('cart-modal').classList.add('hidden');
+    }
+
+    /* Send Order Formatted via WhatsApp */
+    function sendOrderToWhatsApp() {
+      if(cart.length === 0) {
+        alertToast("Tu pedido está vacío. Agrega una bebida primero.");
+        return;
+      }
+
+      const nameEl = document.getElementById('customer-name');
+      const name = nameEl ? nameEl.value.trim() : '';
+
+      if(!name) {
+        alertToast("Por favor ingresa tu nombre para el pedido.");
+        if (nameEl) nameEl.focus();
+        return;
+      }
+
+      let message = `🍹 *NUEVO PEDIDO - JR. DRINKS* 🍹\n`;
+      message += `-----------------------------------\n`;
+      message += `👤 *Cliente:* ${name}\n`;
+      message += `-----------------------------------\n`;
+      message += `🥤 *Detalle de Bebidas:*\n\n`;
+
+      cart.forEach((item, index) => {
+        message += `${index + 1}. *${item.qty}x ${item.title}*\n`;
+        if(item.details) message += `   └ _${item.details}_\n`;
+        message += `   └ Subtotal: $${item.price * item.qty}\n\n`;
+      });
+
+      const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+      message += `-----------------------------------\n`;
+      message += `💰 *TOTAL DE LA COMPRA:* $${total.toFixed(2)}\n\n`;
+      message += `¡Quedo a la espera de confirmación! ✨`;
+
+      const encodedMessage = encodeURIComponent(message);
+      // Opens WhatsApp standard API link
+      window.open(`https://wa.me/528121072125?text=${encodedMessage}`, '_blank');
+    }
+
+    /* Toast Notification System */
+    function alertToast(msg) {
+      const toast = document.createElement('div');
+      toast.className = "fixed top-5 left-1/2 -translate-x-1/2 bg-[#0D1B2A] text-white text-xs font-fredoka px-4 py-2.5 rounded-full shadow-2xl z-50 flex items-center gap-2 border border-[#00D2FF]/40 animate-bounce";
+      toast.innerHTML = `<i class="fa-solid fa-sparkles text-[#00D2FF]"></i> ${msg}`;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
