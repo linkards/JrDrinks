@@ -172,6 +172,8 @@
     .w-16 { width: 4rem; }
     .w-32 { width: 8rem; }
     .w-36 { width: 9rem; }
+    .w-48 { width: 12rem; }
+    .w-56 { width: 14rem; }
 
     .h-auto { height: auto; }
     .h-full { height: 100%; }
@@ -419,8 +421,8 @@
 
       <!-- Top Utility Bar -->
       <div class="flex items-center justify-between mb-4 relative z-10">
-        <span class="bg-[#00D2FF]/20 backdrop-blur-md text-[#00D2FF] text-xs font-semibold px-3 py-1 rounded-full border border-[#00D2FF]/40 flex items-center gap-1.5">
-          <i class="fa-solid fa-bolt text-[#FFC312]"></i> Bebidas Refrescantes
+        <span >
+         
         </span>
         <button onclick="openCartModal()" class="relative p-2.5 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md transition-all active:scale-95">
           <i class="fa-solid fa-basket-shopping text-white text-lg"></i>
@@ -434,7 +436,7 @@
       <div class="flex flex-col items-center text-center relative z-10">
         <div class="relative group cursor-pointer mb-2">
           <div class="absolute -inset-1 bg-gradient-to-r from-[#00D2FF] via-[#FF007A] to-[#FFC312] rounded-full blur-md opacity-75 group-hover:opacity-100 transition duration-1000"></div>
-          <img src="https://i.postimg.cc/zXVXjtZ5/jr-drinks-logo.png" alt="Jr. Drinks Logo" class="relative w-36 sm:w-40 h-auto object-contain drop-shadow-xl transform hover:scale-105 transition duration-300">
+          <img src="https://i.postimg.cc/zXVXjtZ5/jr-drinks-logo.png" alt="Jr. Drinks Logo" class="relative w-48 sm:w-56 h-auto object-contain drop-shadow-xl transform hover:scale-105 transition duration-300">
         </div>
         
         <p class="font-fredoka text-sm text-[#00D2FF] tracking-wider uppercase font-semibold mt-1">
@@ -501,7 +503,7 @@
             </div>
             <div class="text-right">
               <span class="text-xs text-gray-300">Desde</span>
-              <div class="font-fredoka text-2xl font-extrabold text-[#00D2FF]">$50</div>
+              <div class="font-fredoka text-2xl font-extrabold text-[#00D2FF]">$45</div>
             </div>
           </div>
 
@@ -546,7 +548,7 @@
             <div class="pt-2 flex items-center justify-between border-t border-white/10 mt-3">
               <div>
                 <span class="text-[10px] text-gray-400 uppercase">Precio Total:</span>
-                <div id="builder-total-price" class="font-fredoka text-xl font-bold text-[#FFC312]">$50</div>
+                <div id="builder-total-price" class="font-fredoka text-xl font-bold text-[#FFC312]">$45</div>
               </div>
               <button onclick="addCustomSodaToCart()" class="bg-gradient-to-r from-[#00D2FF] to-[#0066FF] hover:from-[#0066FF] hover:to-[#00D2FF] text-white font-fredoka font-bold text-xs px-5 py-2.5 rounded-xl shadow-lg active:scale-95 transition flex items-center gap-1.5">
                 <i class="fa-solid fa-plus"></i> Agregar al Pedido
@@ -796,7 +798,7 @@
         badge: "1 Litro",
         gradient: "from-[#FF9F43] to-[#FF4757]",
         icon: "🍍",
-        image: "https://i.postimg.cc/XJ3kQfGp/mj9.jpg",
+        image: "https://i.postimg.cc/WpZJhFhK/mj10.jpg",
         category: "preparadas",
         available: true
       },
@@ -1034,7 +1036,7 @@
       const bobaSelect = document.getElementById('builder-boba');
       const bobaVal = bobaSelect ? bobaSelect.value.split('|') : [0, 'Sin Perlas'];
 
-      const basePrice = 50;
+      const basePrice = 45;
       const bobaPrice = parseInt(bobaVal[0]) || 0;
 
       const total = basePrice + bobaPrice;
@@ -1050,7 +1052,7 @@
       const bobaSelect = document.getElementById('builder-boba');
       const bobaVal = bobaSelect ? bobaSelect.value.split('|') : [0, 'Sin Perlas'];
 
-      const basePrice = 50;
+      const basePrice = 45;
       const baseTitle = "Soda Italiana 18 oz";
       const bobaPrice = parseInt(bobaVal[0]) || 0;
       const bobaTitle = bobaVal[1] || 'Sin Perlas';
