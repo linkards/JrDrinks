@@ -491,7 +491,13 @@
           ✨ Sodas Explosivas
         </button>
         <button onclick="setCategory('preparadas')" id="cat-btn-preparadas" class="cat-btn bg-white text-gray-600 border border-gray-200 px-4 py-2 rounded-xl font-fredoka text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 hover:bg-gray-50">
-          🍹 Preparadas 1 Litro
+          🍹 Especialidades
+        </button>
+        <button onclick="setCategory('cafes')" id="cat-btn-cafes" class="cat-btn bg-white text-gray-600 border border-gray-200 px-4 py-2 rounded-xl font-fredoka text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 hover:bg-gray-50">
+          ☕ Cafés
+        </button>
+        <button onclick="setCategory('snacks')" id="cat-btn-snacks" class="cat-btn bg-white text-gray-600 border border-gray-200 px-4 py-2 rounded-xl font-fredoka text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 hover:bg-gray-50">
+          🍿 Snacks
         </button>
       </div>
     </div>
@@ -598,7 +604,7 @@
         <div class="flex items-center justify-between mb-3">
           <h2 class="font-fredoka text-base font-bold text-gray-800 flex items-center gap-2">
             <span class="w-3 h-3 rounded-full bg-[#2ED573]"></span>
-            Especialidades de 1 Litro (1L)
+            Especialidades
           </h2>
           <span class="bg-emerald-50 text-emerald-600 text-xs font-semibold px-2.5 py-1 rounded-full border border-emerald-100">
             ¡Máxima Frescura!
@@ -606,6 +612,40 @@
         </div>
 
         <div class="menu-grid" id="preparadas-grid">
+          <!-- Items injected by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Section: Cafés y Frappés -->
+      <section id="section-cafes" class="menu-section">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="font-fredoka text-base font-bold text-gray-800 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-[#8E44AD]"></span>
+            Cafés y Frappés
+          </h2>
+          <span class="bg-emerald-50 text-emerald-600 text-xs font-semibold px-2.5 py-1 rounded-full border border-emerald-100">
+            ☕ ¡Sabor y Energía!
+          </span>
+        </div>
+
+        <div class="menu-grid" id="cafes-grid">
+          <!-- Items injected by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Section: Snacks -->
+      <section id="section-snacks" class="menu-section">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="font-fredoka text-base font-bold text-gray-800 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-[#FF4757]"></span>
+            Snacks
+          </h2>
+          <span class="bg-emerald-50 text-emerald-600 text-xs font-semibold px-2.5 py-1 rounded-full border border-emerald-100">
+            🍿 ¡Para Acompañar!
+          </span>
+        </div>
+
+        <div class="menu-grid" id="snacks-grid">
           <!-- Items injected by JavaScript -->
         </div>
       </section>
@@ -805,8 +845,8 @@
       {
         id: 102,
         name: "Rusa Tropical",
-        desc: "Preparada con toronja/piña, escarchado especial de chamoy y tajín, trozos de fruta y banderilla.",
-        price: 75,
+        desc: "Refrescante, intensa y llena de sabor. Una explosión tropical que se disfruta bien fría.",
+        price: 80,
         size: "",
         badge: "1 Litro",
         gradient: "from-[#FF9F43] to-[#FF4757]",
@@ -818,27 +858,96 @@
       {
         id: 101,
         name: "Agua Mineral Preparada",
-        desc: "Escarchada con chamoy de la casa y chile en polvo, limón fresco, hielo en cubos y sal.",
-        price: 0,
+        desc: "Burbujeante, fresca y con un toque picosito. Una opción ligera, refrescante y perfecta para cualquier momento..",
+        price: 65,
         size: "",
-        badge: "Próximamente",
+        badge: "1 Litro",
         gradient: "from-[#00D2FF] to-[#0066FF]",
         icon: "🍋",
         image: "https://i.postimg.cc/bJcpMJpv/mj11.jpg",
         category: "preparadas",
-        available: false
+        available: true
       },
       {
         id: 104,
         name: "Clamato preparado",
         desc: "Clamato preparado con salsas de la casa (sin alcohol)",
-        price: 0,
+        price: 110,
         size: "",
-        badge: "Próximamente",
-        gradient: "from-[#00D2FF] to-[#0066FF]",
-        icon: "🍋",
+        badge: "1 Litro",
+        gradient: "from-[#FF4757] to-[#C0392B]",
+        icon: "🍅",
         image: "https://i.postimg.cc/xCxg8k8T/mj12.jpg",
         category: "preparadas",
+        available: true
+      },
+      {
+        id: 105,
+        name: "Tepache",
+        desc: "Bebida tradicional de piña fermentada, artesanal, refrescante y servida bien fría.",
+        price: 50,
+        size: "",
+        badge: "1 Litro",
+        gradient: "from-[#FF9F43] to-[#FFC312]",
+        icon: "🍍",
+        image: "https://i.postimg.cc/L6MDWKzW/tepache.png",
+        category: "preparadas",
+        available: true
+      },
+      {
+        id: 107,
+        name: "Tepache 1/2 Litro",
+        desc: "Bebida tradicional de piña fermentada, artesanal, refrescante y servida bien fría.",
+        price: 30,
+        size: "",
+        badge: "1/2 Litro",
+        gradient: "from-[#FF9F43] to-[#FFC312]",
+        icon: "🍍",
+        image: "https://i.postimg.cc/28x63R9M/tepache-2.png",
+        category: "preparadas",
+        available: true
+      },
+      {
+        id: 106,
+        name: "Divorciado",
+        desc: "Concentrado de clamato preparado para que disfrutes en casa con tu cerveza favorita",
+        price: 100,
+        size: "",
+        badge: "1 Litro",
+        gradient: "from-[#FF4757] to-[#8E44AD]",
+        icon: "🍺",
+        image: "https://i.postimg.cc/CxYDqGgz/divorciados.png",
+        category: "preparadas",
+        available: true
+      }
+    ];
+
+     const cafesData = [
+      {
+        id: 201,
+        name: "Café Helado",
+        desc: "Delicioso café frío preparado al instante, cremoso y refrescante.",
+        price: 55,
+        badge: "Próximamente",
+        gradient: "from-[#FF4757] to-[#8E44AD]",
+        icon: "🧋",
+        image: "https://i.postimg.cc/L5pCgq65/caramel.png",
+        category: "cafes",
+        available: false
+      }
+    ];
+
+    const snacksData = [
+      {
+        id: 301,
+        name: "Sandileta",
+        desc: "Deliciosa paleta de sandía con chilito y chamoy para acompañar tus bebidas.",
+        price: 35,
+        badge: "Próximamente",
+        gradient: "from-[#FF4757] to-[#2ED573]",
+        icon: "🍉",
+        image: "https://i.postimg.cc/d1XNsW-gy/sandileta.png",
+        category: "snacks",
         available: false
       }
     ];
@@ -849,6 +958,8 @@
     window.onload = function() {
       renderCombos(combosData);
       renderPreparadas(preparadasData);
+      renderCafes(cafesData);
+      renderSnacks(snacksData);
       updateCartUI();
     };
 
@@ -935,7 +1046,7 @@
         `;
 
         const actionButton = item.available ? `
-          <button onclick="addToCart('${item.name}', ${item.price}, 'Presentación 1 Litro')" class="bg-emerald-50 hover:bg-emerald-600 text-emerald-600 hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold font-fredoka transition flex items-center gap-1.5 active:scale-95">
+          <button onclick="addToCart('${item.name}', ${item.price}, 'Presentación ${item.badge}')" class="bg-emerald-50 hover:bg-emerald-600 text-emerald-600 hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold font-fredoka transition flex items-center gap-1.5 active:scale-95">
             <i class="fa-solid fa-plus text-[11px]"></i>
             <span>Agregar</span>
           </button>
@@ -971,7 +1082,226 @@
 
           <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between mt-auto">
             <div>
-              <span class="text-[10px] text-gray-400">1 Litro</span>
+              <span class="text-[10px] text-gray-400">${item.badge}</span>
+              <div class="font-fredoka text-base font-bold ${item.available ? 'text-[#0066FF]' : 'text-gray-400'}">${priceDisplay}</div>
+            </div>
+            ${actionButton}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderCafes(items) {
+      const grid = document.getElementById('cafes-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      if (items.length === 0) {
+        grid.innerHTML = `<p class="text-xs text-gray-400 col-span-2 text-center py-4">No se encontraron cafés.</p>`;
+        return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-3xl p-3.5 border border-gray-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between overflow-hidden";
+        
+        const imageBlock = item.image ? `
+          <div class="w-full h-36 sm:h-52 rounded-2xl overflow-hidden mb-3 border border-gray-100 bg-gray-50 shadow-sm relative group">
+            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${!item.available ? 'grayscale opacity-75' : ''}" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+            <div class="w-full h-full flex items-center justify-center text-4xl bg-gray-50 hidden">
+              ${item.icon}
+            </div>
+          </div>
+        ` : `
+          <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-xl shrink-0 border border-amber-100 mb-2">
+            ${item.icon}
+          </div>
+        `;
+
+        const actionButton = item.available ? `
+          <button onclick="addToCart('${item.name}', ${item.price}, '${item.badge}')" class="bg-emerald-50 hover:bg-emerald-600 text-emerald-600 hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold font-fredoka transition flex items-center gap-1.5 active:scale-95">
+            <i class="fa-solid fa-plus text-[11px]"></i>
+            <span>Agregar</span>
+          </button>
+        ` : `
+          <button disabled class="bg-amber-100 text-amber-700 px-3.5 py-2 rounded-xl text-xs font-bold font-fredoka cursor-not-allowed flex items-center gap-1.5 opacity-90">
+            <i class="fa-solid fa-clock text-[11px]"></i>
+            <span>Próximamente</span>
+          </button>
+        `;
+
+        const priceDisplay = `$${item.price}`;
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="${item.available ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'} text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">
+                ${item.badge}
+              </span>
+            </div>
+
+            ${imageBlock}
+
+            <div class="mb-3 space-y-1">
+              <h3 class="font-fredoka text-base font-bold text-gray-800 leading-tight">
+                ${item.name}
+              </h3>
+              <p class="text-xs text-gray-600 leading-snug bg-amber-50 p-2 rounded-xl border border-amber-100">
+                ${item.desc}
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between mt-auto">
+            <div>
+              <span class="text-[10px] text-gray-400">${item.badge}</span>
+              <div class="font-fredoka text-base font-bold ${item.available ? 'text-[#0066FF]' : 'text-gray-400'}">${priceDisplay}</div>
+            </div>
+            ${actionButton}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderSnacks(items) {
+      const grid = document.getElementById('snacks-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      if (items.length === 0) {
+        grid.innerHTML = `<p class="text-xs text-gray-400 col-span-2 text-center py-4">No se encontraron snacks.</p>`;
+        return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-3xl p-3.5 border border-gray-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between overflow-hidden";
+        
+        const imageBlock = item.image ? `
+          <div class="w-full h-36 sm:h-52 rounded-2xl overflow-hidden mb-3 border border-gray-100 bg-gray-50 shadow-sm relative group">
+            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${!item.available ? 'grayscale opacity-75' : ''}" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+            <div class="w-full h-full flex items-center justify-center text-4xl bg-gray-50 hidden">
+              ${item.icon}
+            </div>
+          </div>
+        ` : `
+          <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-xl shrink-0 border border-amber-100 mb-2">
+            ${item.icon}
+          </div>
+        `;
+
+        const actionButton = item.available ? `
+          <button onclick="addToCart('${item.name}', ${item.price}, '${item.badge}')" class="bg-emerald-50 hover:bg-emerald-600 text-emerald-600 hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold font-fredoka transition flex items-center gap-1.5 active:scale-95">
+            <i class="fa-solid fa-plus text-[11px]"></i>
+            <span>Agregar</span>
+          </button>
+        ` : `
+          <button disabled class="bg-amber-100 text-amber-700 px-3.5 py-2 rounded-xl text-xs font-bold font-fredoka cursor-not-allowed flex items-center gap-1.5 opacity-90">
+            <i class="fa-solid fa-clock text-[11px]"></i>
+            <span>Próximamente</span>
+          </button>
+        `;
+
+        const priceDisplay = `$${item.price}`;
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="${item.available ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'} text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">
+                ${item.badge}
+              </span>
+            </div>
+
+            ${imageBlock}
+
+            <div class="mb-3 space-y-1">
+              <h3 class="font-fredoka text-base font-bold text-gray-800 leading-tight">
+                ${item.name}
+              </h3>
+              <p class="text-xs text-gray-600 leading-snug bg-amber-50 p-2 rounded-xl border border-amber-100">
+                ${item.desc}
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between mt-auto">
+            <div>
+              <span class="text-[10px] text-gray-400">${item.badge}</span>
+              <div class="font-fredoka text-base font-bold ${item.available ? 'text-[#0066FF]' : 'text-gray-400'}">${priceDisplay}</div>
+            </div>
+            ${actionButton}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderSnacks(items) {
+      const grid = document.getElementById('snacks-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      if (items.length === 0) {
+        grid.innerHTML = `<p class="text-xs text-gray-400 col-span-2 text-center py-4">No se encontraron snacks.</p>`;
+        return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-3xl p-3.5 border border-gray-100 shadow-sm hover:shadow-md transition relative flex flex-col justify-between overflow-hidden";
+        
+        const imageBlock = item.image ? `
+          <div class="w-full h-36 sm:h-52 rounded-2xl overflow-hidden mb-3 border border-gray-100 bg-gray-50 shadow-sm relative group">
+            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${!item.available ? 'grayscale opacity-75' : ''}" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+            <div class="w-full h-full flex items-center justify-center text-4xl bg-gray-50 hidden">
+              ${item.icon}
+            </div>
+          </div>
+        ` : `
+          <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-xl shrink-0 border border-amber-100 mb-2">
+            ${item.icon}
+          </div>
+        `;
+
+        const actionButton = item.available ? `
+          <button onclick="addToCart('${item.name}', ${item.price}, '${item.badge}')" class="bg-emerald-50 hover:bg-emerald-600 text-emerald-600 hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold font-fredoka transition flex items-center gap-1.5 active:scale-95">
+            <i class="fa-solid fa-plus text-[11px]"></i>
+            <span>Agregar</span>
+          </button>
+        ` : `
+          <button disabled class="bg-gray-200 text-gray-500 px-3.5 py-2 rounded-xl text-xs font-bold font-fredoka cursor-not-allowed flex items-center gap-1.5 opacity-80">
+            <i class="fa-solid fa-ban text-[11px]"></i>
+            <span>Agotado</span>
+          </button>
+        `;
+
+        const priceDisplay = item.available ? `$${item.price}` : '---';
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="${item.available ? 'bg-emerald-100 text-emerald-700' : 'bg-gray-200 text-gray-600'} text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">
+                ${item.badge}
+              </span>
+            </div>
+
+            ${imageBlock}
+
+            <div class="mb-3 space-y-1">
+              <h3 class="font-fredoka text-base font-bold text-gray-800 leading-tight">
+                ${item.name}
+              </h3>
+              <p class="text-xs text-gray-600 leading-snug bg-amber-50 p-2 rounded-xl border border-amber-100">
+                ${item.desc}
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between mt-auto">
+            <div>
+              <span class="text-[10px] text-gray-400">${item.badge}</span>
               <div class="font-fredoka text-base font-bold ${item.available ? 'text-[#0066FF]' : 'text-gray-400'}">${priceDisplay}</div>
             </div>
             ${actionButton}
@@ -996,24 +1326,46 @@
 
       const combosSection = document.getElementById('section-combos');
       const preparadasSec = document.getElementById('section-preparadas');
+      const cafesSec = document.getElementById('section-cafes');
+      const snacksSec = document.getElementById('section-snacks');
       const customBuilder = document.getElementById('custom-builder-section');
 
       if (cat === 'all') {
-        combosSection.style.display = 'block';
-        preparadasSec.style.display = 'block';
-        customBuilder.style.display = 'block';
+        if (combosSection) combosSection.style.display = 'block';
+        if (preparadasSec) preparadasSec.style.display = 'block';
+        if (cafesSec) cafesSec.style.display = 'block';
+        if (snacksSec) snacksSec.style.display = 'block';
+        if (customBuilder) customBuilder.style.display = 'block';
       } else if (cat === 'sodas') {
-        combosSection.style.display = 'none';
-        preparadasSec.style.display = 'none';
-        customBuilder.style.display = 'block';
+        if (combosSection) combosSection.style.display = 'none';
+        if (preparadasSec) preparadasSec.style.display = 'none';
+        if (cafesSec) cafesSec.style.display = 'none';
+        if (snacksSec) snacksSec.style.display = 'none';
+        if (customBuilder) customBuilder.style.display = 'block';
       } else if (cat === 'combos') {
-        combosSection.style.display = 'block';
-        preparadasSec.style.display = 'none';
-        customBuilder.style.display = 'none';
+        if (combosSection) combosSection.style.display = 'block';
+        if (preparadasSec) preparadasSec.style.display = 'none';
+        if (cafesSec) cafesSec.style.display = 'none';
+        if (snacksSec) snacksSec.style.display = 'none';
+        if (customBuilder) customBuilder.style.display = 'none';
       } else if (cat === 'preparadas') {
-        combosSection.style.display = 'none';
-        preparadasSec.style.display = 'block';
-        customBuilder.style.display = 'none';
+        if (combosSection) combosSection.style.display = 'none';
+        if (preparadasSec) preparadasSec.style.display = 'block';
+        if (cafesSec) cafesSec.style.display = 'none';
+        if (snacksSec) snacksSec.style.display = 'none';
+        if (customBuilder) customBuilder.style.display = 'none';
+      } else if (cat === 'cafes') {
+        if (combosSection) combosSection.style.display = 'none';
+        if (preparadasSec) preparadasSec.style.display = 'none';
+        if (cafesSec) cafesSec.style.display = 'block';
+        if (snacksSec) snacksSec.style.display = 'none';
+        if (customBuilder) customBuilder.style.display = 'none';
+      } else if (cat === 'snacks') {
+        if (combosSection) combosSection.style.display = 'none';
+        if (preparadasSec) preparadasSec.style.display = 'none';
+        if (cafesSec) cafesSec.style.display = 'none';
+        if (snacksSec) snacksSec.style.display = 'block';
+        if (customBuilder) customBuilder.style.display = 'none';
       }
     }
 
@@ -1035,8 +1387,18 @@
         i.name.toLowerCase().includes(query) || i.desc.toLowerCase().includes(query)
       );
 
+      const filteredCafes = cafesData.filter(i => 
+        i.name.toLowerCase().includes(query) || i.desc.toLowerCase().includes(query)
+      );
+
+      const filteredSnacks = snacksData.filter(i => 
+        i.name.toLowerCase().includes(query) || i.desc.toLowerCase().includes(query)
+      );
+
       renderCombos(filteredCombos);
       renderPreparadas(filteredPreparadas);
+      renderCafes(filteredCafes);
+      renderSnacks(filteredSnacks);
     }
 
     function clearSearch() {
